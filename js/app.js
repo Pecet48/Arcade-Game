@@ -47,7 +47,11 @@ var Player = function(x,y){
 }
 
 Player.prototype.update = function() {
-    
+    if(this.y < 0) {
+        this.x = 200;
+        this.y = 375;
+        alert('Congratulations! You win :)');
+    }
 };
 
 Player.prototype.render = function() {
@@ -67,11 +71,6 @@ Player.prototype.handleInput = function(way) {
             this.y = this.y + 82;
             console.log('KONIEC MAPY!');
         }
-        if(this.y < 0) {
-            player.x = 200;
-            player.y = 375;
-            alert('Congratulations! You win :)');
-        }
     } else if(way == 'right') {
         this.x = this.x + 100;
         if(this.x > 400) {
@@ -85,6 +84,8 @@ Player.prototype.handleInput = function(way) {
             console.log('KONIEC MAPY!');
         }
     }
+
+    player.update();
 
 };
 
